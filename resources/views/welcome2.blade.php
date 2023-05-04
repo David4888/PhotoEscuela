@@ -17,20 +17,22 @@
 
 </header>
 <body class="bg-black h-screen antialiased leading-none font-sans">
-<div class ="flex flex-col items-start px-5"> 
-<a href="{{ url('/fotos/') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Fotos') }}</a>
-</div>
-<div class="flex flex-col items-end px-5">
+<div class="px-5">
     @if(Route::has('login'))
-        <div class="mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6">
-            @auth
-                <a href="{{ url('/home') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Home') }}</a>
-            @else
-                <a href="{{ route('login') }}" class="no-underline hover:bg-purple-300 text-sm font-bold text-white uppercase">{{ __('Login') }}</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="no-underline hover:bg-purple-300 text-sm font-bold text-white uppercase">{{ __('Register') }}</a>
-                @endif
-            @endauth
+        <div class="mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6 flex flex-row justify-between">
+            <div>    
+                <a href="{{ url('/fotos/') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Fotos') }}</a>
+            </div>
+            <div>
+                @auth
+                    <a href="{{ url('/home') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Home') }}</a>
+                @else
+                    <a href="{{ route('login') }}" class="no-underline hover:bg-purple-300 text-sm font-bold text-white uppercase">{{ __('Login') }}</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="no-underline hover:bg-purple-300 text-sm font-bold text-white uppercase">{{ __('Register') }}</a>
+                    @endif
+                @endauth
+            </div>
         </div>
     @endif
     </div>

@@ -24,14 +24,14 @@
                     <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                         Principal
                     </a>                    
-                    @if(Route::current()->getName() != 'listaFotos')
+                    @if(Route::current()->getName() != 'fotos')
                         <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                             Fotos
                         </a>
                     @else
                         Fotos
                     @endif
-                    @if(Route::current()->getName() != 'fotos')
+                    @if(Route::current()->getName() != 'cursos')
                         <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                             Cursos
                         </a>

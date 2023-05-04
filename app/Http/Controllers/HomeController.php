@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index(){
         if(Auth::user()->hasRole('admin')){
 
-            return view("admin.index"); //Para que vaya a la vista del admin
+            return view("admin.index"); 
 
         }else{
 

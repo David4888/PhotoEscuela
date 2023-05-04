@@ -25,14 +25,18 @@
                             <td style='text-align:center'>Genero</td>
                             <td style='text-align:center'>Descripcion</td>
                             <td style='text-align:center'>Usuario</td>
+                            <td style='text-align:center'>Foto</td>
                             <td style='text-align:center'>Opciones</td>
-                        </tr>
+                        </tr> 
                         @forelse ($fotos as $foto)
                             <tr class="divide-gray-200 divide-y text-teal-800">
                                 <td class="py-4 px-4" style='text-align:center'>{{ $foto->Nombre }}</td>
                                 <td class="py-4 px-4" style='text-align:center'>{{ $foto->Genero }}</td>
                                 <td class="py-4 px-4" style='text-align:center'>{{ $foto->Descripcion }}</td>
                                 <td class="py-4 px-4" style='text-align:center'>{{ $foto->user->name }}</td>
+                                <td class="py-4 px-4" style='text-align:center'>   <!--ponemos la ruta de la foto y la mostramos a traves del id-->
+                                    <img src="/images/fotos/{{$foto->id}}.jpg" style="width: 200px; margin:auto">  
+                                </td>
                                 <td><a class="text-gray-700 font-semibold hover:bg-purple-300" style='text-align:center' href="{{ route('fotos.edit', ['id' => $foto->id]) }}">Modificar</a></td>
 
                                 

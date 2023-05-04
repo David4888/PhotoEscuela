@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Listado de Fotos
-Route::get('/fotos', [\App\Http\Controllers\FotosController::class, 'index'])->name('lista_fotos');
+Route::get('/fotos', [\App\Http\Controllers\FotosController::class, 'index'])->name('fotos');
 
 
 //Modificar foto                                                           //Llamada al método

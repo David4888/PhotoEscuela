@@ -57,7 +57,7 @@
 
     <div class="md:flex md:items-center">
         <div class="md:w-1/3">
-            <button class="shadow bg-gray-400 hover:bg-purple-300 focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded" type="submit">
+            <button class="shadow bg-gray-400 hover:bg-purple-300 focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded-2xl" type="submit">
                 Modificar
             </button>
         </div>

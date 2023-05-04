@@ -68,10 +68,11 @@ class FotosController extends Controller
             
             
         ]);
-        $request->Imagen->move(public_path('fotos'), $id.'.jpg');
+        $request->Imagen->move(public_path('images/fotos'), $id.'.jpg');
         $foto->fill($request->only("Nombre", 'Genero', 'Descripcion'))->save();
         return redirect('/fotos')->with("success", __("Foto actualizada!"));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -93,6 +94,8 @@ class FotosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $foto=Fotos::find($id);
+        // $foto->delete();
+        // return back()->with("warning", __("!Imagen eliminada!"));
     }
 }

@@ -29,6 +29,14 @@
 
             <td>{{ $foto->user->name }}</td>
 
+            <td>
+            <form action="{{route('fotos.destroy', $foto->id)}}" method="POST" class="hidden">
+            @method('DELETE')
+            @csrf
+            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+            </form>
+            </td>
+
             </tr>
         @empty
             <tr>

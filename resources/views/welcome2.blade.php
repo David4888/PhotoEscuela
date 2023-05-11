@@ -21,15 +21,15 @@
     @if(Route::has('login'))
         <div class="mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6 flex flex-row justify-between">
             <div>    
-                <a href="{{ url('/fotos/') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Fotos') }}</a>
+                <a href="{{ route('fotos') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Fotos') }}</a>
             </div>
             <div>
                 @auth
                     <a href="{{ url('/home') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Home') }}</a>
                 @else
-                    <a href="{{ route('login') }}" class="no-underline hover:bg-purple-300 text-sm font-bold text-white uppercase">{{ __('Login') }}</a>
+                    <a href="{{ route('login') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Login') }}</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="no-underline hover:bg-purple-300 text-sm font-bold text-white uppercase">{{ __('Register') }}</a>
+                        <a href="{{ route('register') }}" class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Registro') }}</a>
                     @endif
                 @endauth
             </div>

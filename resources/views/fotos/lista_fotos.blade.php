@@ -37,7 +37,7 @@
                                 <td class="py-4 px-4" style='text-align:center'>   <!--ponemos la ruta de la foto y la mostramos a traves del id-->
                                     <img src="/images/fotos/{{$foto->id}}.jpg" style="width: 200px; margin:auto">  
                                 </td>
-                                <td><a class="text-gray-700 font-semibold hover:bg-purple-300" style='text-align:center' href="{{ route('fotos.edit', ['id' => $foto->id]) }}">Modificar</a></td>
+                                <td><a class="text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white" style='text-align:center' href="{{ route('fotos.edit', ['foto' => $foto->id]) }}">Modificar</a></td>
 
                                 
                         @empty

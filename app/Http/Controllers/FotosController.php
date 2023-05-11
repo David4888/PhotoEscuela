@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fotos;
+//use Illuminate\Support\Facades\Auth;
 
 class FotosController extends Controller
 {
+
+    public function __construct(){  //Para comprobar que el usuario esté autentificado
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -92,10 +97,8 @@ class FotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) 
     {
-        // $foto=Fotos::find($id);
-        // $foto->delete();
-        // return back()->with("warning", __("!Imagen eliminada!"));
+       
     }
 }

@@ -9,6 +9,11 @@ use App\Models\Fotos;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()  //La vista del administrador
     {
         return view ('admin.index');

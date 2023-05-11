@@ -7,7 +7,7 @@
     <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-5">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3" for="name">
-                {{ __("Título") }}
+                {{ __("Nombre") }}
             </label>
             <input name="Nombre" value="{{ old('Nombre') ?? $foto->Nombre }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="título" type="text">
             
@@ -56,8 +56,8 @@
     </div>
 
     <div class="md:flex md:items-center">
-        <div class="md:w-1/3">
-            <button class="shadow bg-gray-400 hover:bg-purple-300 focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded-2xl" type="submit">
+        <div class="md:w-1/3 px-3">
+            <button class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg" type="submit">
                 Modificar
             </button>
         </div>

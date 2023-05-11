@@ -12,6 +12,7 @@
         <th scope="col">{{ ("Email") }}</th>
         <th scope="col">{{ ("Rol") }}</th>
         <th scope="col">{{ ("Fecha Alta") }}</th>
+        <th scope="col">{{ ("Opciones") }}</th>
     </tr>
     </thead>
     <tbody>
@@ -29,6 +30,14 @@
                     @endforeach
                 </td>
                 <td>{{ date_format($user->created_at, "d/m/Y") }}</td>
+
+                <td>
+            <form action="{{route('users.destroy', $user->id)}}" method="POST" class="hidden">
+            @method('DELETE')
+            @csrf
+            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+            </form>
+            </td>
 
             </tr>
         @empty

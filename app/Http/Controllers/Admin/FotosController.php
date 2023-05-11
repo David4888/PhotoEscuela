@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Spatie\Permission\Models\Role; 
+use App\Models\Fotos;
+use Illuminate\Support\Facades\Auth;
 
-
-class UserController extends Controller
+class FotosController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -21,8 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(5);
-        return view('admin.index',compact("users"));
+        //
     }
 
     /**
@@ -63,9 +63,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -75,10 +75,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function update()
+    public function update(Request $request, $id)
     {
-       
-    }*/
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -86,10 +86,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) // Eliminar una imagen de la base de datos
     {
-        $users=User::find($id);
-        $users->delete();
-        return back()->with("warning", __("!Usuario eliminado!"));
+        $foto=Fotos::find($id);
+        $foto->delete();
+        return back()->with("warning", __("!Imagen eliminada!"));
     }
 }

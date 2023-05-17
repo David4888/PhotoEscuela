@@ -16,11 +16,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        // if ($request->user()->has_role('admin')) {  //Comprobamos que el usuario es administrador y si no lo es que nos de el error
-        //     return $next($request);
-        // }
-        // else{
-        //     abort(403);
-        // }
+        //return $next($request);
+        if ($request->user()->hasRole('admin')) {  //Comprobamos que el usuario es administrador y si no lo es que nos de el error
+            return $next($request);
+        }
+        else{
+            abort(403);
+        }
     }
 }

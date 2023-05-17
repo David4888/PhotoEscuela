@@ -20,6 +20,7 @@ class FotosController extends Controller
     public function index(){
 
         $fotos = Fotos::all();
+        //dd($fotos);
 
         return view('fotos.lista_fotos', compact('fotos'));
     }
@@ -64,7 +65,7 @@ class FotosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
-    {   
+    {   //dd($request);
         $foto = Fotos::find($id); //Coger la id de la request, la foto de la base de datos
         $this->validate($request, [
             'Nombre' => 'required|unique:fotos,Nombre,' . $foto->id,

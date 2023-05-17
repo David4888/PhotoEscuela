@@ -10,8 +10,9 @@ Route::group(['middleware' => ['can:admin']], function () {
     Route::get('/list-users',[AdminController::class,'list_users']); 
     Route::get('/list-fotos',[AdminController::class,'list_fotos']);
     Route::resource('users',UserController::class);
-    Route::resource('admin/fotos',FotosController::class);  //Ruta para que nos lleve al controladorFotos del admin y ejecute los métodos
-   
+    //Route::resource('admin/fotos',FotosController::class);  //Ruta para que nos lleve al controladorFotos del admin y ejecute los métodos
+    Route::delete('/fotos/borrar/{id}', [FotosController::class, 'destroy'])->name('fotos.destroy'); 
+
     
 });
 

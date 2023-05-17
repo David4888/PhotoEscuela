@@ -29,3 +29,4 @@ Route::get('/fotos', [\App\Http\Controllers\FotosController::class, 'index'])->n
 Route::get('/fotos/modificar/{id}', [\App\Http\Controllers\FotosController::class, 'show'])->name('fotos.show');
 Route::post('/fotos/modificar/{id}', [\App\Http\Controllers\FotosController::class, 'edit'])->name('fotos.edit'); 
 
+//Cambiar por el resource

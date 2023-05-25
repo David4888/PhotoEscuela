@@ -24,9 +24,18 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 // Listado de Fotos
 Route::get('/fotos', [\App\Http\Controllers\FotosController::class, 'index'])->name('fotos');
 
+//Crear foto
+Route::get('/fotos/crear', [\App\Http\Controllers\FotosController::class, 'create'])->name('fotos.create'); //Muestra formulario
+Route::post('/fotos/crear', [\App\Http\Controllers\FotosController::class, 'store'])->name('fotos.store'); //Crea pelicula
 
 //Modificar foto                                                           //Llamada al método
 Route::get('/fotos/modificar/{id}', [\App\Http\Controllers\FotosController::class, 'show'])->name('fotos.show');
 Route::post('/fotos/modificar/{id}', [\App\Http\Controllers\FotosController::class, 'edit'])->name('fotos.edit'); 
 
+//Carrusel
+Route::get('/fotos/carrusel', [\App\Http\Controllers\FotosController::class, 'carrusel'])->name('fotos.carrusel');
+
+
 //Cambiar por el resource
+
+

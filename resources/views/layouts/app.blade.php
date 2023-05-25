@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/javascript.js') }}" defer></script>
     
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -31,12 +32,12 @@
                     @else
                         Fotos
                     @endif
-                    @if(Route::current()->getName() != 'cursos')
-                        <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
-                            Cursos
+                    @if(Route::current()->getName() != 'carrusel')
+                        <a href="{{ url('/fotos/carrusel') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
+                            Galería
                         </a>
                     @else
-                        Cursos
+                        Galería
                     @endif
                 </div>
                 <nav class="space-x-4 text-white font-semibold text-sm sm:text-base">

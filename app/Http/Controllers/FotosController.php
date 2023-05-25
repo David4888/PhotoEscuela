@@ -25,6 +25,13 @@ class FotosController extends Controller
         return view('fotos.lista_fotos', compact('fotos'));
     }
 
+
+    public function carrusel(){
+
+        $fotos = Fotos::all();
+
+        return view('fotos.carrusel', compact('fotos'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +39,7 @@ class FotosController extends Controller
      */
     public function create()
     {
-        //
+        return view('fotos.crear_foto');
     }
 
     /**
@@ -43,7 +50,17 @@ class FotosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $foto = new Fotos(); //Creamos la nueva película
+        $this->validate($request, [ //Validamos los campos
+            'Nombre' => 'required|unique:fotos,Nombre',
+            'Genero' => 'required',
+            'Descripcion' => 'required'
+        ]);
+        $foto->user_id = $request->user()->id; //Asignamos la foto al id del usuario logueado para que la suba
+        $foto->fill($request->only("Nombre", 'Genero', 'Descripcion'))->save();
+        $request->Imagen->move(public_path('images/fotos'), $foto->id.'.jpg'); //asignamos id de la foto
+        return redirect('')->with("success", __("¡Foto creada!"));
     }
 
     /**

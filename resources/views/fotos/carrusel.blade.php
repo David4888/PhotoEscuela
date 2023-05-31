@@ -36,19 +36,20 @@
                 <figure>
                     <img class="" src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}"
                         style="width: 500px; margin:auto; object-fit:cover">
-                    <caption>{{ $foto->Nombre }}</caption>
+    
+                    <caption>{{ $foto->Descripcion }}</caption>
                 </figure>
                 @endforeach
             </div>
 
             <div class="md:flex md:items-center">
         <div class="md:w-1/3 px-3">
-            <button id="anterior" class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-s" type="submit">
-                Anterior
-            </button>
-            <button id="siguiente" class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-s" type="submit">
+            <input type="button" class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-s" value="Anterior" onclick="anterior()" ;>
+            <input type="button" class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-s" value="Siguiente" onclick="siguiente()" ;>
+
+            <!-- <button id="siguiente" class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-s" type="submit">
                 Siguiente
-            </button>
+            </button> -->
         </div>
     </div>
     </div>

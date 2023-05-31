@@ -5,10 +5,10 @@
     <div class="w-full sm:px-6">
 
         @if ($message = Session::get('success'))
-     <div class="alert alert-success alert-block">
-         <button type="button" class="close" data-dismiss="alert">×</button>	
-         <strong>{{ $message }}</strong>
-     </div>
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
         @endif
 
         <style>
@@ -22,27 +22,33 @@
                 background-color: #0009;
                 justify-content: center;
                 align-items: center;
-                
+
             }
 
             .imggrande img {
                 height: 75%;
                 width: auto;
-                object-fit:cover;
+                object-fit: cover;
             }
 
             .close {
-            position: absolute;
-            top: 15px;
-            right: 200px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-}
+                position: absolute;
+                top: 15px;
+                right: 200px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
 
+            .close:hover,
+            .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
         </style>
-    
+
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
             <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
@@ -51,44 +57,49 @@
 
             <div class="w-full p-6">
                 <p class="text-gray-700">
-                    <table class="table table-striped" style="width: 100%">
-                        <tr class="font-semibold">
-                            <td style='text-align:center'>Nombre</td>
-                            <td style='text-align:center'>Genero</td>
-                            <td style='text-align:center'>Descripcion</td>
-                            <td style='text-align:center'>Usuario</td>
-                            <td style='text-align:center'>Foto</td>
-                            <td style='text-align:center'>Opciones</td>
-                        </tr> 
-                        @forelse ($fotos as $foto)
-                            <tr class="divide-gray-200 divide-y text-teal-800">
-                                <td class="py-4 px-4" style='text-align:center'>{{ $foto->Nombre }}</td>
-                                <td class="py-4 px-4" style='text-align:center'>{{ $foto->Genero }}</td>
-                                <td class="py-4 px-4" style='text-align:center'>{{ $foto->Descripcion }}</td>
-                                <td class="py-4 px-4" style='text-align:center'>{{ $foto->user->name }}</td>
-                                <td class="py-4 px-4" style='text-align:center'>   <!--ponemos la ruta de la foto y la mostramos a traves del id-->
-                                    <img class="ampliable" src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}" style="width: 200px; margin:auto">  
-                                    <div class="imggrande">
-                                    <span class="close">&times;</span>
-                                        <img src="" alt="">
-                                        <img src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}">  
-                                    </div>
-                                </td>
-                                <td><a class="text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white" style='text-align:center' href="{{ route('fotos.edit', ['id' => $foto->id]) }}">Modificar</a></td>
+                <table class="table table-striped" style="width: 100%">
+                    <tr class="font-semibold">
+                        <td style='text-align:center'>Nombre</td>
+                        <td style='text-align:center'>Genero</td>
+                        <td style='text-align:center'>Descripcion</td>
+                        <td style='text-align:center'>Usuario</td>
+                        <td style='text-align:center'>Foto</td>
+                        <td style='text-align:center'>Opciones</td>
+                    </tr>
+                    @forelse ($fotos as $foto)
+                    <tr class="divide-gray-200 divide-y text-teal-800">
+                        <td class="py-4 px-4" style='text-align:center'>{{ $foto->Nombre }}</td>
+                        <td class="py-4 px-4" style='text-align:center'>{{ $foto->Genero }}</td>
+                        <td class="py-4 px-4" style='text-align:center'>{{ $foto->Descripcion }}</td>
+                        <td class="py-4 px-4" style='text-align:center'>{{ $foto->user->name }}</td>
+                        <td class="py-4 px-4" style='text-align:center'>
+                            <!--ponemos la ruta de la foto y la mostramos a traves del id-->
+                            <img class="ampliable"
+                                src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}"
+                                style="width: 200px; margin:auto">
+                            <div class="imggrande">
+                                <span class="close">&times;</span>
+                                <img src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}">
+                            </div>
+                        </td>
+                        <td><a class="text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white"
+                                style='text-align:center'
+                                href="{{ route('fotos.edit', ['id' => $foto->id]) }}">Modificar</a></td>
 
-                                
+
                         @empty
-                            <tr>
-                                <td colspan="2">No hay fotos disponibles</td>
-                            </tr>
-                        @endforelse
-                    </table>
+                    <tr>
+                        <td colspan="2">No hay fotos disponibles</td>
+                    </tr>
+                    @endforelse
+                </table>
                 </p>
             </div>
         </section>
     </div>
     <button>
-    <a class="px-3 text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white" style='text-align:center' href="{{ route('fotos.store') }}">Subir nueva foto</a>
+        <a class="px-3 text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white"
+            style='text-align:center' href="{{ route('fotos.store') }}">Subir nueva foto</a>
     </button>
 </main>
 @endsection

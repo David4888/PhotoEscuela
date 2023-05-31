@@ -1,10 +1,16 @@
 // Creamos la función ampliar para mostrar la foto agrandada
 
+var ampliadaActual;
 function ampliar(evento) {
     evento.target.nextElementSibling.style.display='flex';  //NextElementSibling para acceder al hermano 
-    
+    ampliadaActual = evento.target.nextElementSibling;
 }
 
+//Creamos la función para cerrar la ventana de la imagen
+function cerrar() { 
+  ampliadaActual.style.display='none';
+  
+}
 
 //Recorremos fotos y activamos el evento click al pulsar
 function inicializar() {
@@ -13,74 +19,69 @@ function inicializar() {
     for (var i = 0; i < fotos.length; i++) {
         fotos[i].addEventListener('click', ampliar);
     }
+
+  //Creamos un span para cerrar la imágen mediante la función onclick
+  var spansClose = document.getElementsByClassName('close');
+
+  for (var i = 0; i < spansClose.length; i++) {
+    spansClose[i].addEventListener('click', cerrar);
+  }
+  
 }
-
-var span = document.getElementsByClassName("close")[0];
-
-span.onclick = function() { 
-    var fotos = document.getElementsByClassName('imggrande');
-        fotos.style.display = "none";
-      }
 
 window.addEventListener('load', inicializar);
 
 
 
-//Slider 
-
-//CARGA DE ARCHIVOS
-
-//tiempo en milisegundos
-let tiempo=2000;
-
-//imágenes a utilziar en el pase
-let galeria=[
-  "https://picsum.photos/id/137/200/300",
-  "https://picsum.photos/id/237/200/300",
-  "https://picsum.photos/id/337/200/300",
-  "https://picsum.photos/id/537/200/300",
-  "https://picsum.photos/seed/picsum/200/300"  
-];
-
-
-//COSNTRUCCIÓN DE LA ESTRUCTURA DE DIAPOSITIVAS
-let ruta = document.getElementById('pasefotos');
-let miHTML="";
-
-for(let i=0; i<galeria.length;i++){
-  miHTML+='<li><img src="'+galeria[i]+'"></li>';  
-}
-
-ruta.innerHTML=miHTML;
-
-
-// INTERACTIVIDAD / TEMPORIZACIÓN 
-
-//diapo mostrada
-let diapo=0;
 
 
 
-function siguienteFoto(){
-  for(let i=0; i<galeria.length;i++){
+
+
+
+
+//Slider de imágenes
+
+var carrusel = document.getElementsByTagName('figure');
+var diapo = 0;
+
+function carruselFotos(){
+  for(let i=0; i<carrusel.length;i++){
     let foto = i;
     if(foto!=diapo){
-    ruta.getElementsByTagName('li')[foto].style.opacity="0";
+    carrusel[foto].style.zIndex="0";
   
       }
     else{
-      ruta.getElementsByTagName('li')[foto].style.opacity="1";
+      carrusel[foto].style.zIndex="1";
     }
   }
-  if(diapo<galeria.length-1){
+  
+}
+
+function siguiente() {
+  if(diapo<carrusel.length-1){
     diapo++;
   }
   else{
     diapo=0;
   }
+  carruselFotos();
 }
 
+function anterior() {
+  console.log(diapo);
+  if(diapo>0){
+    diapo--;
+  }
+  else{
+    diapo=carrusel.length-1;
+  }
+  carruselFotos();
+}
+
+tiempo = 7000;
+// setInterval(carruselFotos, siguiente);
+setInterval(carruselFotos, tiempo);
 
 
-// llamamos a la función
-setInterval(siguienteFoto, tiempo);

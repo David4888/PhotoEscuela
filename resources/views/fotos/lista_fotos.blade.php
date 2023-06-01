@@ -97,8 +97,8 @@
             </div>
         </section>
     </div>
-    <button>
-        <a class="px-3 text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white"
+    <button class="my-6 px-3">
+        <a class="px-3 my-1 text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white"
             style='text-align:center' href="{{ route('fotos.store') }}">Subir nueva foto</a>
     </button>
 </main>

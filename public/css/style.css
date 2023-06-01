@@ -1,0 +1,37 @@
+
+            .imggrande {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #0009;
+                justify-content: center;
+                align-items: center;
+
+            }
+
+            .imggrande img {
+                height: 75%;
+                width: auto;
+                object-fit: cover;
+            }
+
+            .close {
+                position: absolute;
+                top: 15px;
+                right: 200px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
+      

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fotos;
 
-//use Illuminate\Support\Facades\Auth;
-
 class FotosController extends Controller
 {
 
@@ -18,9 +16,10 @@ class FotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index(Request $request){
 
-        $fotos = Fotos::all();
+        $user = $request->user();
+        $fotos = Fotos::where('user_id', $user->id)->get(); //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
         //dd($fotos);
 
         return view('fotos.lista_fotos', compact('fotos'));

@@ -27,12 +27,12 @@
                     </a>                    
                     @if(Route::current()->getName() != 'fotos')
                         <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
-                            Fotos
+                           Mis Fotos
                         </a>
                     @else
-                        Fotos
+                        Mis Fotos
                     @endif
-                    @if(Route::current()->getName() != 'carrusel')
+                    @if(Route::current()->getName() != 'fotos.carrusel')
                         <a href="{{ url('/fotos/carrusel') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                             Galería
                         </a>

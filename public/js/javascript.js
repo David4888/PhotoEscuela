@@ -28,15 +28,8 @@ function inicializar() {
   }
   
 }
-
+//Llamamos al evento
 window.addEventListener('load', inicializar);
-
-
-
-
-
-
-
 
 
 
@@ -49,14 +42,14 @@ function carruselFotos(){
   for(let i=0; i<carrusel.length;i++){
     let foto = i;
     if(foto!=diapo){
-    carrusel[foto].style.zIndex="0";
+    carrusel[foto].style.opacity=0;
   
       }
     else{
-      carrusel[foto].style.zIndex="1";
+      carrusel[foto].style.opacity=1;
     }
   }
-  
+ 
 }
 
 function siguiente() {
@@ -80,8 +73,8 @@ function anterior() {
   carruselFotos();
 }
 
-tiempo = 7000;
-// setInterval(carruselFotos, siguiente);
-setInterval(carruselFotos, tiempo);
+
+tiempo = 5000;
+setInterval(siguiente, tiempo);
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fotos;
+use App\Models\Categoria;
 
 class FotosController extends Controller
 {
@@ -19,8 +20,8 @@ class FotosController extends Controller
     public function index(Request $request){
 
         $user = $request->user();
-        $fotos = Fotos::where('user_id', $user->id)->get(); //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
-        //dd($fotos);
+        $fotos = Fotos::with('categoria')
+            ->where('user_id', $user->id)->get(); //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
 
         return view('fotos.lista_fotos', compact('fotos'));
     }
@@ -39,7 +40,8 @@ class FotosController extends Controller
      */
     public function create()
     {
-        return view('fotos.crear_foto');
+        $categorias = Categoria::all();
+        return view('fotos.crear_foto', compact('categorias'));
     }
 
     /**
@@ -54,13 +56,13 @@ class FotosController extends Controller
         $foto = new Fotos(); //Creamos la nueva película
         $this->validate($request, [ //Validamos los campos
             'Nombre' => 'required|unique:fotos,Nombre',
-            'Genero' => 'required',
-            'Descripcion' => 'required'
+            'Descripcion' => 'required',
+            'id_categoria' => 'required'
         ]);
         $foto->user_id = $request->user()->id; //Asignamos la foto al id del usuario logueado para que la suba
-        $foto->fill($request->only("Nombre", 'Genero', 'Descripcion'))->save();
+        $foto->fill($request->only("Nombre", 'Descripcion', 'id_categoria'))->save();
         $request->Imagen->move(public_path('images/fotos'), $foto->id.'.jpg'); //asignamos id de la foto
-        return redirect('')->with("success", __("¡Foto creada!"));
+        return redirect('/fotos')->with("success", __("Foto creada!"));
     }
 
     /**
@@ -72,7 +74,8 @@ class FotosController extends Controller
     public function show($id)
     {
         $foto = Fotos::find($id);
-        return view('fotos.modificar_fotos', compact('foto'));
+        $categorias = Categoria::all();
+        return view('fotos.modificar_fotos', compact('foto', 'categorias'));
     }
 
     /**
@@ -86,13 +89,13 @@ class FotosController extends Controller
         $foto = Fotos::find($id); //Coger la id de la request, la foto de la base de datos
         $this->validate($request, [
             'Nombre' => 'required|unique:fotos,Nombre,' . $foto->id,
-            'Genero' => 'required',
             'Descripcion' => 'required',
-            
-            
+            'id_categoria' => 'required'
         ]);
-        $request->Imagen->move(public_path('images/fotos'), $id.'.jpg');
-        $foto->fill($request->only("Nombre", 'Genero', 'Descripcion'))->save();
+        if ($request->has('Imagen')) {
+            $request->Imagen->move(public_path('images/fotos'), $id.'.jpg');
+        }
+        $foto->fill($request->only("Nombre", 'Descripcion', 'id_categoria'))->save();
         return redirect('/fotos')->with("success", __("Foto actualizada!"));
     }
     

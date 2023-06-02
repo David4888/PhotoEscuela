@@ -9,10 +9,14 @@ class Fotos extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['Nombre','Genero','Descripcion'];  //Campos modificables con el método fill
+    protected $fillable = ['Nombre','Descripcion', 'id_categoria'];  //Campos modificables con el método fill
 
     public function user(){
         return $this->belongsTo(User::class);
     }
-    
+
+    public function categoria(){
+        return $this->belongsTo(Categoria::class, 'id_categoria', 'id');
+    }
+
 }

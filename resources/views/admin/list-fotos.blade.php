@@ -9,7 +9,7 @@
     <thead>
     <tr>
         <th scope="col">{{ ("Nombre") }}</th>
-        <th scope="col">{{ ("Genero") }}</th>
+        <th scope="col">{{ ("Categoria") }}</th>
         <th scope="col">{{ ("Descripcion") }}</th>
         <th scope="col">{{ ("Usuario") }}</th>
         <th scope="col">{{ ("Opciones") }}</th>

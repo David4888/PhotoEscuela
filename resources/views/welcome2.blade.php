@@ -26,7 +26,9 @@
                 <a href="{{ route('fotos') }}"
                     class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Fotos') }}</a>
                 <a href="{{ url('/fotos/carrusel') }}"
-                    class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Galería') }}</a>
+                    class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Galería') }}</a>
+                <a href="{{ url('/fotos/carrusel') }}"
+                    class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Contacto') }}</a>
             </div>
 
             <div>
@@ -35,7 +37,7 @@
                     class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Home') }}</a>
                 @else
                 <a href="{{ route('login') }}"
-                    class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Login') }}</a>
+                    class="p-3 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Login') }}</a>
                 @if (Route::has('register'))
                 <a href="{{ route('register') }}"
                     class="no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Registro') }}</a>
@@ -104,7 +106,10 @@
 
         .foto:nth-child(3) {
             background-image: url('https://c.wallhere.com/photos/95/89/aurora_borealis_atmosphere-263884.jpg!d');
-        }
+        }   
+
+        .foto h2{ opacity:0; scale:3; filter:blur(5px); transition:0.9s; text-shadow:0 0 6px rgba(0,0,0,.8)}
+        .foto:hover h2{ opacity:1; scale:1; filter:blur(0)}
 
     </style>
     <div class="min-h-screen flex items-center justify-center">

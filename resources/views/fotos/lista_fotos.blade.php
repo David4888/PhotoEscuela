@@ -5,8 +5,7 @@
     <div class="w-full sm:px-6">
 
         @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+        <div>
             <strong>{{ $message }}</strong>
         </div>
         @endif
@@ -60,7 +59,7 @@
                 <table class="table table-striped" style="width: 100%">
                     <tr class="font-semibold">
                         <td style='text-align:center'>Nombre</td>
-                        <td style='text-align:center'>Genero</td>
+                        <td style='text-align:center'>Categoria</td>
                         <td style='text-align:center'>Descripcion</td>
                         <td style='text-align:center'>Usuario</td>
                         <td style='text-align:center'>Foto</td>
@@ -69,7 +68,7 @@
                     @forelse ($fotos as $foto)
                     <tr class="divide-gray-200 divide-y text-teal-800">
                         <td class="py-4 px-4" style='text-align:center'>{{ $foto->Nombre }}</td>
-                        <td class="py-4 px-4" style='text-align:center'>{{ $foto->Genero }}</td>
+                        <td class="py-4 px-4" style='text-align:center'>{{ $foto->categoria->Nombre }}</td>
                         <td class="py-4 px-4" style='text-align:center'>{{ $foto->Descripcion }}</td>
                         <td class="py-4 px-4" style='text-align:center'>{{ $foto->user->name }}</td>
                         <td class="py-4 px-4" style='text-align:center'>
@@ -82,7 +81,7 @@
                                 <img src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}">
                             </div>
                         </td>
-                        <td><a class="text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white"
+                        <td><a class="text-gray-500 font-semibold hover:bg-purple-300 rounded hover:text-white"
                                 style='text-align:center'
                                 href="{{ route('fotos.edit', ['id' => $foto->id]) }}">Modificar</a></td>
 
@@ -97,8 +96,8 @@
             </div>
         </section>
     </div>
-    <button class="my-6 px-3">
-        <a class="px-3 my-1 text-gray-500 font-semibold hover:bg-purple-300 rounded-lg hover:text-white"
+    <button class="my-6 px-6">
+        <a class="shadow bg-gray-300 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded-lg"
             style='text-align:center' href="{{ route('fotos.store') }}">Subir nueva foto</a>
     </button>
 </main>

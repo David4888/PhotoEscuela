@@ -39,6 +39,14 @@
                     @else
                         Galería
                     @endif
+                    @if(Route::current()->getName() != 'fotos')
+                        <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
+                           Contacto
+                        </a>
+                    @else
+                        Contacto
+                    @endif
+                    
                 </div>
                 <nav class="space-x-4 text-white font-semibold text-sm sm:text-base">
                     @guest

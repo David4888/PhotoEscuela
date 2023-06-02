@@ -52,7 +52,21 @@ function carruselFotos(){
  
 }
 
+var interval;
+
 function siguiente() {
+  clearInterval(interval);
+  interval = setInterval(siguienteAuto, tiempo);
+  if(diapo<carrusel.length-1){
+    diapo++;
+  }
+  else{
+    diapo=0;
+  }
+  carruselFotos();
+}
+
+function siguienteAuto() {
   if(diapo<carrusel.length-1){
     diapo++;
   }
@@ -75,6 +89,6 @@ function anterior() {
 
 
 tiempo = 5000;
-setInterval(siguiente, tiempo);
+interval = setInterval(siguienteAuto, tiempo);
 
 

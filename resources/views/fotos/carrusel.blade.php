@@ -36,7 +36,6 @@
                 height: 330px;
                 
             }
-
             
         </style>
 
@@ -60,10 +59,10 @@
             <div class="flex justify-center">
                 <div class="my-6">
                     <input type="button"
-                        class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-s"
+                        class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
                         value="Anterior" onclick="anterior()" ;>
                     <input type="button"
-                        class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-s"
+                        class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
                         value="Siguiente" onclick="siguiente()" ;>
                 </div>
             </div>

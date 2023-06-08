@@ -51,7 +51,8 @@
                     <img class="" src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}"
                         style="width: 500px; margin:auto; object-fit:cover">
 
-                    <caption>{{ $foto->Descripcion }}</caption>
+                    <caption>{{ $foto->Descripcion }}</caption><br>
+                    <caption>Autor:{{ $foto->user->name }}</caption>
                 </figure>
                 @endforeach
             </div>

@@ -20,10 +20,21 @@ class FotosController extends Controller
     public function index(Request $request){
 
         $user = $request->user();
-        $fotos = Fotos::with('categoria')
-            ->where('user_id', $user->id)->get(); //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
+        if ($request->has('id_categoria') && $request->query('id_categoria') != -1) { //Si en el request hay id_categoria  o tiene valor -1
+                $id_categoria = $request->query('id_categoria');
+                $fotos = Fotos::with('categoria')
+                ->where('user_id', $user->id) //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
+                ->where('id_categoria', $request->query('id_categoria')) //filtramos por id_categoria
+                ->get(); 
+        }
+        else {
+            $id_categoria = -1;
+            $fotos = Fotos::with('categoria')
+                ->where('user_id', $user->id)->get(); //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
+        }
+        $categorias = Categoria::all();
 
-        return view('fotos.lista_fotos', compact('fotos'));
+        return view('fotos.lista_fotos', compact('fotos', 'categorias', 'id_categoria'));
     }
 
 
@@ -98,7 +109,7 @@ class FotosController extends Controller
         $foto->fill($request->only("Nombre", 'Descripcion', 'id_categoria'))->save();
         return redirect('/fotos')->with("success", __("Foto actualizada!"));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -120,6 +131,8 @@ class FotosController extends Controller
      */
     public function destroy($id) 
     {
-       
+        $foto=Fotos::find($id);
+        $foto->delete();
+        return back()->with("warning", __("!Foto eliminada!"));
     }
 }

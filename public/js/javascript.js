@@ -77,7 +77,7 @@ function siguienteAuto() {
 }
 
 function anterior() {
-  console.log(diapo);
+  // console.log(diapo);
   if(diapo>0){
     diapo--;
   }

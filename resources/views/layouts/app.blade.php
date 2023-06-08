@@ -39,8 +39,8 @@
                     @else
                         Galería
                     @endif
-                    @if(Route::current()->getName() != 'fotos')
-                        <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
+                    @if(Route::current()->getName() != 'fotos.buscar')
+                        <a href="{{ url('/fotos/buscar') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                            Contacto
                         </a>
                     @else

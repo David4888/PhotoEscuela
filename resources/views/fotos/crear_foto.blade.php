@@ -4,7 +4,7 @@
 <form class="w-full max-w-full border-5" method="POST" action="{{ route('fotos.store') }}"
     enctype="multipart/form-data">
     @csrf
-    <h1 class="font-semibold py-5 mb-10 bg-purple-200 text-white px-5">Nueva Foto</h1>
+    <h1 class="font-semibold text-center py-5 mb-10 bg-purple-200 text-white px-5">Nueva Foto</h1>
     <div class="flex flex-wrap mt-3">
         <div class="w-full px-5">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3" for="Nombre">

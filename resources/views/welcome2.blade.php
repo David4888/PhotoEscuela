@@ -27,7 +27,7 @@
                     class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Fotos') }}</a>
                 <a href="{{ url('/fotos/carrusel') }}"
                     class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Galería') }}</a>
-                <a href="{{ url('/fotos/carrusel') }}"
+                <a href="{{ url('/fotos/buscar') }}"
                     class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Contacto') }}</a>
             </div>
 
@@ -92,7 +92,7 @@
 
         /*Este es el primer elemento de la clase foto*/
         .foto {
-            height: 75vh;
+            height: 100vh;
             /*Para que ocupe el 75% del dispositivo*/
         }
         /* Accedemos a los hijos */

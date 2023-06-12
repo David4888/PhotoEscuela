@@ -17,9 +17,9 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-purple-100 antialiased leading-none font-sans">
+<body class="bg-black antialiased leading-none font-sans">
     <div id="app">
-        <header class="bg-gray-400 py-6">
+        <header class="bg-black py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div>
                     <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">

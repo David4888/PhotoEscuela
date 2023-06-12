@@ -10,7 +10,7 @@
                 position: relative;
                 width: 100%;
                 height: 400px;
-                
+
             }
 
             .carrusel figure {
@@ -34,40 +34,74 @@
             img {
                 border-radius: 20px;
                 height: 330px;
-                
+
             }
-            
         </style>
 
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
+
             <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                Slider
+                Galería de imágenes
             </header>
 
-            <div class="carrusel" id="pasefotos">
-                @foreach ($fotos as $foto)
-                <figure>
-                    <img class="" src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}"
-                        style="width: 500px; margin:auto; object-fit:cover">
+            <div class="flex flex-wrap mt-3">
+                <div class="w-full px-5 mb-3">
+                    <form class="w-full max-w-full border-5" method="GET" action="{{ route('fotos.carrusel') }}"
+                        enctype="multipart/form-data">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3"
+                            for="Categoria">
+                            {{ __("Filtrar por Categoría") }}
+                        </label>
+                        <select name="id_categoria">
+                            <option value="-1" @if (-1==$id_categoria) selected="selected" @endif>Todas</option>
+                            @foreach ($categorias as $categoria)
+                            <option value="{{ $categoria->id }}" @if ($categoria->id == $id_categoria)
+                                selected="selected"
+                                @endif
+                                >{{ $categoria->Nombre }}</option>
+                            @endforeach
+                        </select>
 
-                    <caption>{{ $foto->Descripcion }}</caption><br>
-                    <caption>Autor:{{ $foto->user->name }}</caption>
-                </figure>
-                @endforeach
-            </div>
+                        <button
+                            class="shadow bg-gray-300 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold ml-2 py-2 px-4 rounded-lg"
+                            type="submit">
+                            Buscar
+                        </button>
 
-            <div class="flex justify-center">
-                <div class="my-6">
-                    <input type="button"
-                        class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
-                        value="Anterior" onclick="anterior()" ;>
-                    <input type="button"
-                        class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
-                        value="Siguiente" onclick="siguiente()" ;>
+                        <div class="carrusel" id="pasefotos">
+                            @forelse ($fotos as $foto)
+                            <figure>
+                                <img class="bg-purple-100" src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}"
+                                    style="width: 500px; margin:auto; object-fit:cover">
+
+                                <div style="display: flex; justify-content: space-between;width: 500px">
+                                    <div>{{ $foto->Descripcion }}</div>
+                                    <div>Autor:{{ $foto->user->name }}</div>
+                                </div>
+                            </figure>
+                            @empty
+                            <figure>
+                                <img class="" src="{{ asset('images/noencontrada.jpg') }}"
+                                    style="width: 500px; margin:auto; object-fit:cover">
+
+                                <caption>No hay imágenes en esta categoría<br>
+                            </figure>
+                            @endforelse
+                        </div>
+                    </form>
+
+                    <div class="flex justify-center">
+                        <div class="my-6">
+                            <input type="button"
+                                class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
+                                value="Anterior" onclick="anterior()" ;>
+                            <input type="button"
+                                class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
+                                value="Siguiente" onclick="siguiente()" ;>
+                        </div>
+                    </div>
                 </div>
-            </div>
-    </div>
-    </section>
+        </section>
 </main>
 @endsection

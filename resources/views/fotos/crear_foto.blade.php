@@ -1,7 +1,7 @@
 @extends('/layouts.app')
 
 @section('content')
-<form class="w-full max-w-full border-5" method="POST" action="{{ route('fotos.store') }}"
+<form class="w-full max-w-full border-5 bg-purple-100" method="POST" action="{{ route('fotos.store') }}"
     enctype="multipart/form-data">
     @csrf
     <h1 class="font-semibold text-center py-5 mb-10 bg-purple-200 text-white px-5">Nueva Foto</h1>
@@ -25,7 +25,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3" for="Categoria">
                 {{ __("Categoria") }}
             </label>
-            <select name="id_categoria">
+            <select name="id_categoria" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 @foreach ($categorias as $categoria)
                 <option value="{{ $categoria->id }}" @if ($categoria->id == old('id_categoria', ''))
                     selected="selected"

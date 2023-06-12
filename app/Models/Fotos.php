@@ -12,11 +12,11 @@ class Fotos extends Model
     protected $fillable = ['Nombre','Descripcion', 'id_categoria'];  //Campos modificables con el método fill
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class); //Creamos la relación La foto pertenece a un usuario
     }
 
     public function categoria(){
-        return $this->belongsTo(Categoria::class, 'id_categoria', 'id');
+        return $this->belongsTo(Categoria::class, 'id_categoria', 'id'); //La foto pertenece a una categoria
     }
 
 }

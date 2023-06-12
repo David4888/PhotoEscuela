@@ -22,7 +22,6 @@ class FotoSeeder extends Seeder
         Categoria::create(['Nombre'=>'Urbana']);
         Categoria::create(['Nombre'=>'Gastronomica']);
         Categoria::create(['Nombre'=>'Deportiva']);
-        Categoria::create(['Nombre'=>'Astronomica']);
         Categoria::create(['Nombre'=>'Aerea']);
         
     }

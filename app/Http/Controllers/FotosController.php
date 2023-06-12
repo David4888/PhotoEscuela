@@ -20,9 +20,9 @@ class FotosController extends Controller
     public function index(Request $request){
 
         $user = $request->user();
-        if ($request->has('id_categoria') && $request->query('id_categoria') != -1) { //Si en el request hay id_categoria  o tiene valor -1
-                $id_categoria = $request->query('id_categoria');
-                $fotos = Fotos::with('categoria')
+        if ($request->has('id_categoria') && $request->query('id_categoria') != -1) { //Si en el request hay id_categoria  o tiene valor distinto de -1
+                $id_categoria = $request->query('id_categoria'); //realiza filtrado por id categoría
+                $fotos = Fotos::with('categoria') //Si no las coge todas las imágenes
                 ->where('user_id', $user->id) //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
                 ->where('id_categoria', $request->query('id_categoria')) //filtramos por id_categoria
                 ->get(); 
@@ -34,15 +34,25 @@ class FotosController extends Controller
         }
         $categorias = Categoria::all();
 
-        return view('fotos.lista_fotos', compact('fotos', 'categorias', 'id_categoria'));
+        return view('fotos.lista_fotos', compact('fotos', 'categorias', 'id_categoria')); //le pasamos las variables a las que tiene que acceder el compact para la vista
     }
 
 
-    public function carrusel(){
+    public function carrusel(Request $request){
 
-        $fotos = Fotos::all();
+        if ($request->has('id_categoria') && $request->query('id_categoria') != -1) { //Si en el request hay id_categoria  o tiene valor -1
+            $id_categoria = $request->query('id_categoria'); //Obtenemos el id y lo guardamos en la variable
+            $fotos = Fotos::with('categoria') //Obtenemos las fotos con la información de la categoría
+                ->where('id_categoria', $request->query('id_categoria')) //filtramos por id_categoria
+                ->get(); 
+        }
+        else {
+            $id_categoria = -1; 
+            $fotos = Fotos::all(); //cargamos todas las fotos
+        }
+        $categorias = Categoria::all();
 
-        return view('fotos.carrusel', compact('fotos'));
+        return view('fotos.carrusel', compact('fotos', 'categorias', 'id_categoria'));
     }
     /**
      * Show the form for creating a new resource.
@@ -63,7 +73,6 @@ class FotosController extends Controller
      */
     public function store(Request $request)
     {
-        
         $foto = new Fotos(); //Creamos la nueva película
         $this->validate($request, [ //Validamos los campos
             'Nombre' => 'required|unique:fotos,Nombre',
@@ -71,8 +80,8 @@ class FotosController extends Controller
             'id_categoria' => 'required'
         ]);
         $foto->user_id = $request->user()->id; //Asignamos la foto al id del usuario logueado para que la suba
-        $foto->fill($request->only("Nombre", 'Descripcion', 'id_categoria'))->save();
-        $request->Imagen->move(public_path('images/fotos'), $foto->id.'.jpg'); //asignamos id de la foto
+        $foto->fill($request->only("Nombre", 'Descripcion', 'id_categoria'))->save(); //rellenamos los campos de la foto para actualizar la base de datos
+        $request->Imagen->move(public_path('images/fotos'), $foto->id.'.jpg'); //Movemos la imagen ala ruta y asignamos el nombre con el id de la foto
         return redirect('/fotos')->with("success", __("Foto creada!"));
     }
 
@@ -82,9 +91,12 @@ class FotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $foto = Fotos::find($id);
+        $user_id = $request->user()->id; //Asignamos la foto al id del usuario logueado para que la suba
+        $foto = Fotos::find($id); //Buscamos una foto por id
+        if ($foto->user_id != $user_id) abort(403); //Si la foto pertenece a un usuario distinto al logueado generamos un error de acceso no autorizado
+
         $categorias = Categoria::all();
         return view('fotos.modificar_fotos', compact('foto', 'categorias'));
     }
@@ -98,7 +110,10 @@ class FotosController extends Controller
     public function edit(Request $request, $id)
     {   //dd($request);
         $foto = Fotos::find($id); //Coger la id de la request, la foto de la base de datos
-        $this->validate($request, [
+        $user_id = $request->user()->id; //Asignamos la foto al id del usuario logueado para que la suba
+        if ($foto->user_id != $user_id) abort(403); //Si la foto pertenece a un usuario distinto al logueado generamos un error de acceso no autorizado
+
+        $this->validate($request, [ // validamos los campos de la base de datos
             'Nombre' => 'required|unique:fotos,Nombre,' . $foto->id,
             'Descripcion' => 'required',
             'id_categoria' => 'required'
@@ -131,8 +146,8 @@ class FotosController extends Controller
      */
     public function destroy($id) 
     {
-        $foto=Fotos::find($id);
-        $foto->delete();
+        $foto=Fotos::find($id); //Mostramos la foto por la id
+        $foto->delete(); //Borramos la foto
         return back()->with("warning", __("!Foto eliminada!"));
     }
 }

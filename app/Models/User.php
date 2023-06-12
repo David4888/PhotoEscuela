@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function fotos(){
         return $this->hasMany(Fotos::class)->withTimestamps();
-    }
+    } //Los usuarios pueden tener de una a muchas fotos
 
     public function cursos(){
         return $this->hasMany(Cursos::class)->withTimestamps();

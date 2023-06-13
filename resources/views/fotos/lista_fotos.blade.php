@@ -5,13 +5,13 @@
     <div class="w-full sm:px-6">
 
         @if ($message = Session::get('success'))
-        <div>
+        <div style="color:white">
             <strong>{{ $message }}</strong>
         </div>
         @endif
 
         @if ($message = Session::get('warning'))
-        <div><strong>{{ $message }}</strong>
+        <div style="color:white"><strong>{{ $message }}</strong>
         </div>
         @endif
 

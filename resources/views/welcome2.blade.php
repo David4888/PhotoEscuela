@@ -29,7 +29,7 @@
                 <a href="{{ url('/fotos/carrusel') }}"
                     class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Galería')
                     }}</a>
-                <a href="{{ url('/fotos/buscar') }}"
+                <a href="{{ url('/contacto') }}"
                     class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Contacto')
                     }}</a>
             </div>

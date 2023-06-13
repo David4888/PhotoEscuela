@@ -255,10 +255,21 @@ return [
             
         ],
         [
-            'text'        => 'Fotos',
+            'text'        => 'Fotos de usuarios',
             'url'         => 'admin/list-fotos',
             'icon'        => 'fas fa-fw fa-user',
         ],
+        [
+            'text'        => 'Subir fotos',
+            'url'         => 'fotos',
+            'icon'        => 'fas fa-fw fa-user',
+        ],
+        [
+            'text'        => 'Slider',
+            'url'         => 'fotos/carrusel',
+            'icon'        => 'fas fa-fw fa-user',
+        ],
+        
        
         /*[
             'text'    => 'multilevel',

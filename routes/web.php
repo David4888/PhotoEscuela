@@ -38,6 +38,7 @@ Route::get('/fotos/borrar/{id}', [\App\Http\Controllers\FotosController::class, 
 //Carrusel
 Route::get('/fotos/carrusel', [\App\Http\Controllers\FotosController::class, 'carrusel'])->name('fotos.carrusel');
 
-
-
+//Contacto
+Route::get('contacto', [\App\Http\Controllers\ContactaController::class, 'index'])->name('contacto.index');
+Route::post('contacto', [\App\Http\Controllers\ContactaController::class, 'store'])->name('contacto.store');
 

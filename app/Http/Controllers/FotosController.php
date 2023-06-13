@@ -22,7 +22,7 @@ class FotosController extends Controller
         $user = $request->user();
         if ($request->has('id_categoria') && $request->query('id_categoria') != -1) { //Si en el request hay id_categoria  o tiene valor distinto de -1
                 $id_categoria = $request->query('id_categoria'); //realiza filtrado por id categoría
-                $fotos = Fotos::with('categoria') //Si no las coge todas las imágenes
+                $fotos = Fotos::with('categoria') //Si no, las coge todas las imágenes
                 ->where('user_id', $user->id) //Mostramos las fotos según el id del usuario para que solo muestre las del usuario logueado
                 ->where('id_categoria', $request->query('id_categoria')) //filtramos por id_categoria
                 ->get(); 
@@ -77,7 +77,8 @@ class FotosController extends Controller
         $this->validate($request, [ //Validamos los campos
             'Nombre' => 'required|unique:fotos,Nombre',
             'Descripcion' => 'required',
-            'id_categoria' => 'required'
+            'id_categoria' => 'required',
+            'Imagen'=>'required'
         ]);
         $foto->user_id = $request->user()->id; //Asignamos la foto al id del usuario logueado para que la suba
         $foto->fill($request->only("Nombre", 'Descripcion', 'id_categoria'))->save(); //rellenamos los campos de la foto para actualizar la base de datos

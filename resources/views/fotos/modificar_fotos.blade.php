@@ -80,9 +80,9 @@
     
 
     <div class="md:flex md:items-center">
-        <div class="md:w-1/3 px-6">
+        <div class="md:w-1/3 px-6 mb-10">
             <button
-                class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
+                class="shadow bg-gray-300 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded-lg"
                 type="submit">
                 Modificar
             </button>

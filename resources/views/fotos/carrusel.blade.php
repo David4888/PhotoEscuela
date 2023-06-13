@@ -9,7 +9,7 @@
             .carrusel {
                 position: relative;
                 width: 100%;
-                height: 400px;
+                height: 700px;
 
             }
 
@@ -33,7 +33,7 @@
 
             img {
                 border-radius: 20px;
-                height: 330px;
+                height: 650px;
 
             }
         </style>
@@ -72,18 +72,19 @@
                         <div class="carrusel" id="pasefotos">
                             @forelse ($fotos as $foto)
                             <figure>
+                            <div style="text-align:center;font-style: italic">Autor: {{ $foto->user->name }}</div> 
                                 <img class="bg-purple-100" src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}"
-                                    style="width: 500px; margin:auto; object-fit:cover">
+                                    style="width: 1080px; margin:auto; object-fit:cover">
 
-                                <div style="display: flex; justify-content: space-between;width: 500px">
-                                    <div>{{ $foto->Descripcion }}</div>
-                                    <div>Autor:{{ $foto->user->name }}</div>
+                                <div>
+                                    <div style="font-style: italic">{{ $foto->Descripcion }}</div>
+                                    
                                 </div>
                             </figure>
                             @empty
                             <figure>
                                 <img class="" src="{{ asset('images/noencontrada.jpg') }}"
-                                    style="width: 500px; margin:auto; object-fit:cover">
+                                    style="width: 1080px; margin:auto; object-fit:cover">
 
                                 <caption>No hay imágenes en esta categoría<br>
                             </figure>
@@ -94,10 +95,10 @@
                     <div class="flex justify-center">
                         <div class="my-6">
                             <input type="button"
-                                class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
+                                class="shadow bg-gray-300 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded-lg"
                                 value="Anterior" onclick="anterior()" ;>
                             <input type="button"
-                                class="shadow bg-gray-400 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-300 font-bold py-2 px-4 rounded-lg"
+                                class="shadow bg-gray-300 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded-lg"
                                 value="Siguiente" onclick="siguiente()" ;>
                         </div>
                     </div>

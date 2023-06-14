@@ -32,36 +32,36 @@
         <header class="bg-black py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div class="flex flex-row">
-                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline">
-                        <span class="material-symbols-outlined">
+                    <a href="{{ url('/') }}" class="mr-4 text-lg font-semibold text-gray-100 px-3 no-underline">
+                        <span class="mr-4 material-symbols-outlined">
                             photo_camera
                             </span>
                     </a> 
                                        
                     @if(Route::current()->getName() != 'fotos')
-                        <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
+                        <a href="{{ url('/fotos') }}" class="mr-4 text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                            Mis Fotos
                         </a>
                     @else
-                        <span class="text-lg font-semibold text-gray-500">
+                        <span class="mr-4 text-lg font-semibold text-gray-500">
                             Mis Fotos
                         </span>
                     @endif
                     @if(Route::current()->getName() != 'fotos.carrusel')
-                        <a href="{{ url('/fotos/carrusel') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
+                        <a href="{{ url('/fotos/carrusel') }}" class="mr-4 text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                             Galería
                         </a>
                     @else
-                    <span class="text-lg font-semibold text-gray-500">
+                    <span class="mr-4 text-lg font-semibold text-gray-500">
                             Galería
                         </span>
                     @endif
                     @if(Route::current()->getName() != 'contacto.index')
-                        <a href="{{ url('/contacto') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
+                        <a href="{{ url('/contacto') }}" class="mr-4 text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                            Contacto
                         </a>
                     @else
-                    <span class="text-lg font-semibold text-gray-500">
+                    <span class="mr-4 text-lg font-semibold text-gray-500">
                             Contacto
                         </span>
                     @endif

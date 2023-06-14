@@ -34,13 +34,13 @@
 <body class="bg-black h-screen antialiased leading-none font-sans">
     <div class="px-6">
         @if(Route::has('login'))
-        <div class="mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6 flex flex-row justify-between">
-            <div class="flex flex-row">
-                <div class="material-symbols-outlined text-lg font-semibold text-gray-500">
+        <div class="mt-4 mr-4 ml-2 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6 flex flex-row justify-between">
+            <div class="flex flex-row ml-2">
+                <div class="mr-4 ml-2 material-symbols-outlined text-lg font-semibold text-gray-500">
                     photo_camera
                 </div>
                 <a href="{{ route('fotos') }}"
-                    class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Fotos')
+                    class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Mis Fotos')
                     }}</a>
                 <a href="{{ url('/fotos/carrusel') }}"
                     class="px-6 no-underline hover:underline text-sm font-bold text-white uppercase">{{ __('Galería')

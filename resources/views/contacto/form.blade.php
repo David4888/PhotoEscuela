@@ -1,5 +1,7 @@
 
-<form class="w-full max-w-lg border-4 bg-purple-100" method="POST" action="{{ route('contacto.store') }}">
+@extends('layouts.app')
+@section('content')
+<form class="w-full max-w-lg border-4 bg-purple-100 mx-auto mt-5" method="POST" action="{{ route('contacto.store') }}">
     @csrf
     <h1 class="font-semibold text-center py-5 mb-10 bg-purple-200 text-white px-5">Formulario de contacto</h1>
     
@@ -37,7 +39,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold my-5" for="mensaje">
                 {{ __("Mensaje") }}
             </label>
-            <textarea  rows="15" name="mensaje" class="no-resize appearance-none block w-full bg-gray-300 
+            <textarea  name="mensaje" class="no-resize appearance-none block w-full bg-gray-300 
             text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none 
             focus:bg-white focus:border-gray-500 h-48 resize-none" id="mensaje"></textarea>
             <p class="text-gray-600 text-xs italic -my-3 mb-6">{{ __("Escribe tu mensaje") }}</p>
@@ -57,3 +59,4 @@
     </div>
 </form>
 </div>
+@endsection

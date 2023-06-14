@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   //Llamamos a todos los seeders
+    {   //Llamamos a todos los seeders por orden
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(FotoSeeder::class);
         $this->call(CategoriaSeeder::class);
+        $this->call(FotoSeeder::class);
 
         // \App\Models\User::factory(10)->create();
     }

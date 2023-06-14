@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Fotos; 
 use App\Models\User; 
+use App\Models\Categoria; 
 
 class FotoSeeder extends Seeder
 {
@@ -16,12 +17,13 @@ class FotoSeeder extends Seeder
     public function run()
     {   //Creamos un seeder con los Datos iniciales para la base
         $users = User::all();
+        $categoria = Categoria::all()[0];
         $fotos = [                                                              //Asocio un id de usuario aleatorio a cada foto
-            Fotos::create(['Nombre'=>'Foto','Genero'=>'Paisaje','Descripcion'=>'Puesta de sol', 'user_id' => $users->random()->id]),
-            Fotos::create(['Nombre'=>'Foto2','Genero'=>'Urbano','Descripcion'=>'Ciudad', 'user_id' => $users->random()->id]),
-            Fotos::create(['Nombre'=>'Foto3','Genero'=>'Paisaje','Descripcion'=>'Playa', 'user_id' => $users->random()->id]),
-            Fotos::create(['Nombre'=>'Foto4','Genero'=>'Paisaje','Descripcion'=>'Desierto', 'user_id' => $users->random()->id]),
-            Fotos::create(['Nombre'=>'Foto5','Genero'=>'Paisaje','Descripcion'=>'Luna llena', 'user_id' => $users->random()->id]),
+            Fotos::create(['Nombre'=>'Foto','id_categoria'=>$categoria->id,'Descripcion'=>'Luna llena', 'user_id' => $users->random()->id]),
+            Fotos::create(['Nombre'=>'Foto2','id_categoria'=>$categoria->id,'Descripcion'=>'Ciudad de noche', 'user_id' => $users->random()->id]),
+            Fotos::create(['Nombre'=>'Foto3','id_categoria'=>$categoria->id,'Descripcion'=>'Amanecer en la playa', 'user_id' => $users->random()->id]),
+            Fotos::create(['Nombre'=>'Foto4','id_categoria'=>$categoria->id,'Descripcion'=>'Atardecer', 'user_id' => $users->random()->id]),
+            Fotos::create(['Nombre'=>'Foto5','id_categoria'=>$categoria->id,'Descripcion'=>'Aurora Boreal', 'user_id' => $users->random()->id]),
         ];
 
        

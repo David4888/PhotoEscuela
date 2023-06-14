@@ -15,36 +15,55 @@
     <script src="{{ asset('js/javascript.js') }}" defer></script>
     
     <!-- Styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+    }
+    </style>
 <body class="bg-black antialiased leading-none font-sans">
     <div id="app">
         <header class="bg-black py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
-                <div>
-                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
-                        Principal
-                    </a>                    
+                <div class="flex flex-row">
+                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline">
+                        <span class="material-symbols-outlined">
+                            photo_camera
+                            </span>
+                    </a> 
+                                       
                     @if(Route::current()->getName() != 'fotos')
                         <a href="{{ url('/fotos') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                            Mis Fotos
                         </a>
                     @else
-                        Mis Fotos
+                        <span class="text-lg font-semibold text-gray-500">
+                            Mis Fotos
+                        </span>
                     @endif
                     @if(Route::current()->getName() != 'fotos.carrusel')
                         <a href="{{ url('/fotos/carrusel') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                             Galería
                         </a>
                     @else
-                        Galería
+                    <span class="text-lg font-semibold text-gray-500">
+                            Galería
+                        </span>
                     @endif
                     @if(Route::current()->getName() != 'contacto.index')
                         <a href="{{ url('/contacto') }}" class="text-lg font-semibold text-gray-100 px-3 no-underline hover:underline">
                            Contacto
                         </a>
                     @else
-                        Contacto
+                    <span class="text-lg font-semibold text-gray-500">
+                            Contacto
+                        </span>
                     @endif
                     
                 </div>

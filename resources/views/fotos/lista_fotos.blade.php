@@ -123,7 +123,7 @@
                                 <img src="/images/fotos/{{$foto->id}}.jpg?{{Carbon\Carbon::now()->timestamp}}">
                             </div>
                         </td>
-                        <td><a class="text-gray-500 font-semibold hover:bg-purple-300 rounded hover:text-white"
+                        <td style='text-align:center'><a class="text-gray-500 font-semibold hover:bg-purple-300 rounded hover:text-white"
                                 style='text-align:center'
                                 href="{{ route('fotos.edit', ['id' => $foto->id]) }}">Modificar</a>|
 

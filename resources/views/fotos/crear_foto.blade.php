@@ -80,7 +80,7 @@
             <button
                 class="shadow bg-gray-300 hover:bg-purple-300 hover:text-white focus:shadow-outline focus:outline-none text-gray-500 font-bold py-2 px-4 rounded-lg"
                 type="submit">
-                Crear
+                Subir Foto
             </button>
         </div>
     </div>

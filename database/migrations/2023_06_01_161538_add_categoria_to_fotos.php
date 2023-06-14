@@ -31,6 +31,7 @@ class AddCategoriaToFotos extends Migration
     public function down()
     {
         Schema::table('fotos', function (Blueprint $table) {
+            $table->dropForeign(['id_categoria']);
             $table->dropColumn('id_categoria');
         });
     }
